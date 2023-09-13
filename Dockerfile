@@ -15,3 +15,14 @@ RUN apt update && apt install -y jq python3-pip python3.11-venv python3-full vim
 RUN python3 -m venv .venv && . .venv/bin/activate && pip install jenkins-job-builder
 
 USER jenkins
+
+// build: docker build -t jenkins:jcasc .
+// run: docker run -it --name jenkins --rm -p 8080:8080 jenkins:jcasc
+
+// exec: 
+//  ID=$(docker container ls -q -f name=^jenkins$)
+//  docker exec -it $ID /bin/bash
+
+// exec jenkins-job-builder: 
+//   . .venv/bin/activate
+//   jenkins-jobs update job_definitions/job_definitions.yaml 
