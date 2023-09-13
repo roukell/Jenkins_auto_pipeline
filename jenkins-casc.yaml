@@ -1,0 +1,17 @@
+jenkins:
+  systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code plugin\n\n"
+  securityRealm:
+    local:
+      users:
+      - id: "admin"
+        name: "admin"
+        password: "admin"
+        properties:
+        - "apiToken"
+        - "mailer"
+        - timezone:
+            timeZoneName: "Australia/Sydney"
+unclassified:
+  location:
+    url: http://localhost:8080/
+    adminAddress: "test@example.com"

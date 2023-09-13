@@ -1,0 +1,11 @@
+- job: 
+    name: first-pipeline
+    project-type: freestyle
+    defaults: global
+    description: 'job created by jenkins jobs builder'
+    disabled: false
+    display-name: 'first-pipeline'
+    concurrent: true
+    retry-count: 3
+    builders:
+      - shell: 'echo helloWorld'
