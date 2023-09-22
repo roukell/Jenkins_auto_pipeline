@@ -1,3 +1,4 @@
+# Job definition for Jenkins Job Builder
 - job:
     name: some-pipeline
     project-type: pipeline
