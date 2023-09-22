@@ -6,8 +6,8 @@ import jenkins.model.JenkinsLocationConfiguration
 
 // parameters
 def jenkinsParameters = [
-  email:  'melody@coralactive.com',
-  url:    'http://sailfish.cloud-coral.com:8080/'
+  email:  'admin@example.com',
+  url:    'http://example.com:8080/'
 ]
 
 // get Jenkins location configuration
