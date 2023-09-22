@@ -1,11 +1,17 @@
 jenkins:
+  authorizationStrategy:
+    loggedInUsersCanDoAnything:
+      allowAnonymousRead: false
+  crumbIssuer:
+    excludeClientIPFromCrumb: true
   systemMessage: "Jenkins configured automatically by Jenkins Configuration as Code plugin\n\n"
   securityRealm:
     local:
+      allowsSignup: false
+      enableCaptcha: false
       users:
       - id: "admin"
         name: "admin"
-        password: "admin"
         properties:
         - "apiToken"
         - "mailer"
@@ -13,5 +19,5 @@ jenkins:
             timeZoneName: "Australia/Sydney"
 unclassified:
   location:
-    url: http://localhost:8080/
+    url: http://example.com:8080/
     adminAddress: "test@example.com"
