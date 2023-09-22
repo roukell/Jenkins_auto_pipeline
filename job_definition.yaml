@@ -1,11 +1,61 @@
-- job: 
-    name: first-pipeline
-    project-type: freestyle
+- job:
+    name: some-pipeline
+    project-type: pipeline
+    sandbox: true
     defaults: global
     description: 'job created by jenkins jobs builder'
     disabled: false
-    display-name: 'first-pipeline'
+    display-name: 'some-pipeline'
     concurrent: true
     retry-count: 3
-    builders:
-      - shell: 'echo helloWorld'
+    dsl: |
+      pipeline {
+        agent any
+        options { timestamps () }
+
+        stages {
+
+            stage('Build') {
+                steps {
+                    echo 'Building'
+                    dir ('/some/dir'){
+                        sh 'do something...'
+                    }
+                }
+            }
+
+            stage('Test') {
+                steps {
+                    echo 'Testing'
+                        dir ('/some/dir'){
+                        sh 'do more things...'
+                    }
+                }
+
+                post {
+                    always {
+                        dir('/some/dir') {
+                            junit 'results/*.xml'
+
+                                publishHTML([
+                                    allowMissing: false, 
+                                    alwaysLinkToLastBuild: true, 
+                                    keepAll: true, 
+                                    reportDir: 'some-report', 
+                                    reportFiles: 'index.html', 
+                                    reportName: 'Some Test Report'])
+
+                                emailext(
+                                    subject: 'JenkinsvPipeline Test Email',
+                                    to: '$DEFAULT_RECIPIENTS',
+                                    replyTo: '$DEFAULT_RECIPIENTS',
+                                    body: '<body>',
+                                    mimeType: 'text/html')
+
+                            sh 'do more things...'
+                        }
+                    }
+                }
+            }
+        }
+      }
