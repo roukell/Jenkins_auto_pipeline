@@ -53,6 +53,14 @@
                                     body: '<body>',
                                     mimeType: 'text/html')
 
+                                 withAWS(region:'ap-southeast-4') {
+                                    sh 'echo "Uploading content with AWS creds"'
+                                    s3Upload(
+                                        file:'some/file/path', 
+                                        bucket:'someBucket',
+                                        path: 'some/file/path/in/bucket')
+                                 }
+
                             sh 'do more things...'
                         }
                     }
