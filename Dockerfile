@@ -16,13 +16,13 @@ RUN python3 -m venv .venv && . .venv/bin/activate && pip install jenkins-job-bui
 
 USER jenkins
 
-// build: docker build -t jenkins:jcasc .
-// run: docker run -it --name jenkins --rm -p 8080:8080 jenkins:jcasc
+# build: docker build -t jenkins:jcasc .
+# run: docker run -it --name jenkins --rm -p 8080:8080 jenkins:jcasc
 
-// exec: 
-//  ID=$(docker container ls -q -f name=^jenkins$)
-//  docker exec -it $ID /bin/bash
+# exec: 
+#  ID=$(docker container ls -q -f name=^jenkins$)
+#  docker exec -it $ID /bin/bash
 
-// exec jenkins-job-builder: 
-//   . .venv/bin/activate
-//   jenkins-jobs update job_definitions/job_definitions.yaml 
+# exec jenkins-job-builder: 
+#   . .venv/bin/activate
+#   jenkins-jobs update job_definitions/job_definitions.yaml 
