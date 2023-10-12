@@ -17,3 +17,5 @@ def result = apiTokenProperty.tokenStore.generateNewToken(tokenName)
 user.save()
 
 return result.plainValue
+
+// only use this script if you need an api token for remote access
